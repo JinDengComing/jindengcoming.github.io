@@ -1164,7 +1164,7 @@ pre code {
 }
 .menu-item a:hover,
 .menu-item a.menu-item-active {
-  background: #e7202b;
+  background: #ef382b;
   color: #fff;
   border-radius: 4px;
   padding: 5px;
@@ -1223,7 +1223,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #ffc7ff;
+  background: #952fc8;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2183,16 +2183,23 @@ pre code {
 .category-all-page .category-list-item {
   margin: 5px 10px;
 }
+.category-all-page .category-list-item a {
+  color: #ef382b;
+  background: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 1px 1px 1px 3px #eee;
+  margin-right: 10px;
+}
 .category-all-page .category-list-count {
   font-size: 0.75em;
-  background: #eee;
-  border-radius: 0;
-  color: #555;
-  font-weight: bold;
-  line-height: 1;
-  margin-left: 0.35em;
-  padding: 1px 4px;
-  text-shadow: none;
+  background: #ef382b;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  border-radius: 4px;
+  padding: 0px 5px;
+  text-align: center;
 }
 .category-all-page .category-list-child {
   padding-left: 10px;
