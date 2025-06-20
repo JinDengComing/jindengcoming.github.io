@@ -136,18 +136,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -164,6 +164,448 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Nodejs/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jin Deng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Nodejs/index/" class="post-title-link" itemprop="url">NodeJs</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025 14:03:42 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-20T14:03:42+08:00">2025</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Nodejs"><a href="#Nodejs" class="headerlink" title="Nodejs"></a><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">Nodejs</a></h1><p>在任何地方运行 JavaScript</p>
+<p>Node.js® 是一个免费、开源、跨平台的 JavaScript 运行时环境, 它让开发人员能够创建服务器 Web 应用、命令行工具和脚本。</p>
+<h2 id="WebServer"><a href="#WebServer" class="headerlink" title="WebServer"></a>WebServer</h2><p>使用 Node.js 编写的 web服务器，响应返回 ‘Hello World’：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">&#x27;127.0.0.1&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;Hello World\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(port, hostname, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`服务器运行在 http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node example.js</span><br><span class="line">服务器运行在 http://127.0.0.1:3000/</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块api-https-www-nodeapp-cn-synopsis-html"><a href="#模块api-https-www-nodeapp-cn-synopsis-html" class="headerlink" title="模块api https://www.nodeapp.cn/synopsis.html"></a>模块api <a target="_blank" rel="noopener" href="https://www.nodeapp.cn/synopsis.html">https://www.nodeapp.cn/synopsis.html</a></h2><h3 id="crypto-加密"><a href="#crypto-加密" class="headerlink" title="crypto (加密)"></a>crypto (加密)</h3><p>crypto 模块提供了加密功能，包含对 OpenSSL 的哈希、HMAC、加密、解密、签名、以及验证功能的一整套封装。<br>使用 require(‘crypto’) 来访问该模块。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> secret = <span class="string">&#x27;abcdefg&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> hash = crypto.<span class="title function_">createHmac</span>(<span class="string">&#x27;sha256&#x27;</span>, secret)</span><br><span class="line">                   .<span class="title function_">update</span>(<span class="string">&#x27;I love cupcakes&#x27;</span>)</span><br><span class="line">                   .<span class="title function_">digest</span>(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hash);</span><br><span class="line"><span class="comment">// Prints:</span></span><br><span class="line"><span class="comment">//   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e</span></span><br></pre></td></tr></table></figure>
+<h3 id="Cipher"><a href="#Cipher" class="headerlink" title="Cipher"></a>Cipher</h3><p>Cipher类的实例用于加密数据。这个类可以用在以下两种方法中的一种:</p>
+<p>作为stream，既可读又可写，未加密数据的编写是为了在可读的方面生成加密的数据，或者<br>使用cipher.update()和cipher.final()方法产生加密的数据。<br>crypto.createCipher()或crypto.createCipheriv()方法用于创建Cipher实例。Cipher对象不能直接使用new关键字创建。</p>
+<p>示例:使用Cipher对象作为流:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> cipher = crypto.<span class="title function_">createCipher</span>(<span class="string">&#x27;aes192&#x27;</span>, <span class="string">&#x27;a password&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> encrypted = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">cipher.<span class="title function_">on</span>(<span class="string">&#x27;readable&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> data = cipher.<span class="title function_">read</span>();</span><br><span class="line">  <span class="keyword">if</span> (data)</span><br><span class="line">    encrypted += data.<span class="title function_">toString</span>(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">cipher.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(encrypted);</span><br><span class="line">  <span class="comment">// Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">cipher.<span class="title function_">write</span>(<span class="string">&#x27;some clear text data&#x27;</span>);</span><br><span class="line">cipher.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
+
+<p>示例:使用Cipher和管道流:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> cipher = crypto.<span class="title function_">createCipher</span>(<span class="string">&#x27;aes192&#x27;</span>, <span class="string">&#x27;a password&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> input = fs.<span class="title function_">createReadStream</span>(<span class="string">&#x27;test.js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> output = fs.<span class="title function_">createWriteStream</span>(<span class="string">&#x27;test.enc&#x27;</span>);</span><br><span class="line"></span><br><span class="line">input.<span class="title function_">pipe</span>(cipher).<span class="title function_">pipe</span>(output);</span><br></pre></td></tr></table></figure>
+
+<p>示例:使用cipher.update()和cipher.final()方法:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> cipher = crypto.<span class="title function_">createCipher</span>(<span class="string">&#x27;aes192&#x27;</span>, <span class="string">&#x27;a password&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> encrypted = cipher.<span class="title function_">update</span>(<span class="string">&#x27;some clear text data&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">encrypted += cipher.<span class="title function_">final</span>(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(encrypted);</span><br><span class="line"><span class="comment">// Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Database/type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jin Deng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Database/type/" class="post-title-link" itemprop="url">数据库类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025 11:32:59 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-20T11:32:59+08:00">2025</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/database/" itemprop="url" rel="index"><span itemprop="name">database</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据库类型"><a href="#数据库类型" class="headerlink" title="数据库类型"></a>数据库类型</h1><h2 id="mySql"><a href="#mySql" class="headerlink" title="mySql"></a>mySql</h2><h2 id="oracle"><a href="#oracle" class="headerlink" title="oracle"></a>oracle</h2>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Database/orm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jin Deng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Database/orm/" class="post-title-link" itemprop="url">数据库ORM模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025 11:27:32 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-20T11:27:32+08:00">2025</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/database/" itemprop="url" rel="index"><span itemprop="name">database</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><p>Object-Relationl Mapping，它的作用是在关系型数据库和对象之间作一个映射，这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了 。<br>业务逻辑和数据处理逻辑分离，使用对象和数据层的映射关系。</p>
+<h2 id="以nodejs后端为例"><a href="#以nodejs后端为例" class="headerlink" title="以nodejs后端为例"></a>以<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">nodejs</a>后端为例</h2><h3 id="sequelize"><a href="#sequelize" class="headerlink" title="sequelize"></a><a target="_blank" rel="noopener" href="https://www.sequelize.cn/">sequelize</a></h3><ol>
+<li>首先建立连接</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Sequelize</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;sequelize&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> oracledb <span class="keyword">from</span> <span class="string">&#x27;oracledb&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sequelize = <span class="keyword">new</span> <span class="title class_">Sequelize</span>(</span><br><span class="line">  <span class="string">&#x27;orcl&#x27;</span>,<span class="comment">//名称</span></span><br><span class="line">  <span class="string">&#x27;ly_mh_jcfw&#x27;</span>,<span class="comment">//用户</span></span><br><span class="line">  <span class="string">&#x27;ly_mh_jcfw@2021&#x27;</span>,<span class="comment">//密码</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,<span class="comment">//地址</span></span><br><span class="line">    <span class="attr">port</span>: <span class="string">&#x27;post&#x27;</span>,<span class="comment">//端口</span></span><br><span class="line">    <span class="attr">dialect</span>: <span class="string">&#x27;oracle&#x27;</span>,<span class="comment">//类型</span></span><br><span class="line">    <span class="attr">dialectModule</span>: oracledb,<span class="comment">//数据库插件</span></span><br><span class="line">    <span class="attr">pool</span>: &#123;</span><br><span class="line">      <span class="attr">max</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">acquire</span>: <span class="number">30000</span>,</span><br><span class="line">      <span class="attr">idle</span>: <span class="number">10000</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">timezone</span>: <span class="string">&quot;+08:00&quot;</span>, <span class="comment">//改为标准时区</span></span><br><span class="line">    <span class="attr">dialectOptions</span>: &#123;</span><br><span class="line">      <span class="attr">dateStrings</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">typeCast</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">define</span>: &#123;</span><br><span class="line">      <span class="attr">timestamps</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//暴露模块</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sequelize;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>定义model层<br>首先建立模型，关联对应数据库表映射</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Sequelize</span> <span class="keyword">from</span> <span class="string">&#x27;../db/connection&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">DataTypes</span>, <span class="title class_">Model</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;sequelize&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//表模型</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">LogSchema</span> = &#123;</span><br><span class="line">    <span class="comment">//字段定义</span></span><br><span class="line">    <span class="attr">LOGID</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="title class_">DataTypes</span>.<span class="property">STRING</span>,<span class="comment">//数据类型</span></span><br><span class="line">        <span class="attr">allowNull</span>: <span class="literal">false</span>,<span class="comment">//允许为空</span></span><br><span class="line">        <span class="attr">primaryKey</span>: <span class="literal">true</span>,<span class="comment">//是否主键</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Model</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Log</span>.<span class="title function_">init</span>(</span><br><span class="line">    <span class="title class_">LogSchema</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">sequelize</span>: <span class="title class_">Sequelize</span>,</span><br><span class="line">        <span class="attr">tableName</span>: <span class="string">&#x27;LY_MH_YM_LOG&#x27;</span>,</span><br><span class="line">        <span class="attr">modelName</span>: <span class="string">&#x27;pageLog&#x27;</span>,</span><br><span class="line">        <span class="attr">timestamps</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化表结构，查看连接是否成功</span></span><br><span class="line"><span class="title class_">Log</span>.<span class="title function_">sync</span>(&#123; <span class="attr">force</span>: <span class="literal">false</span> &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">Logger</span>.<span class="title function_">info</span>(<span class="string">&#x27;日志表同步成功&#x27;</span>);</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">Logger</span>.<span class="title function_">error</span>(<span class="string">&#x27;日志表同步失败&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Log</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>controller 业务层使用</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Request</span>, <span class="title class_">Response</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;express&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Log</span> <span class="keyword">from</span> <span class="string">&#x27;../models/log.models&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分页查询用户日志表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">userLogPage</span> = <span class="keyword">async</span> (<span class="params"><span class="attr">req</span>: <span class="title class_">Request</span>, <span class="attr">res</span>: <span class="title class_">Response</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; pageNum, pageSize, userId &#125; = req?.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="attr">begin</span>: <span class="built_in">number</span> = (<span class="title class_">Number</span>(pageNum) - <span class="number">1</span>) * <span class="title class_">Number</span>(pageSize);</span><br><span class="line">    <span class="keyword">const</span> &#123; rows, count &#125; = <span class="keyword">await</span> <span class="title class_">Log</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">        <span class="attr">attributes</span>: [</span><br><span class="line">            <span class="string">&#x27;ID&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;USERID&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;USERNAME&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;DELETEPAGE&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;UPDATEPAGE&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;SORTPAGE&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;updatedTime&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">offset</span>: begin,</span><br><span class="line">        <span class="attr">limit</span>: <span class="title class_">Number</span>(pageSize) || <span class="number">10</span>,</span><br><span class="line">        <span class="attr">where</span>: userId ? &#123; <span class="attr">USERID</span>: userId || <span class="string">&#x27;&#x27;</span> &#125; : &#123;&#125;,</span><br><span class="line">        <span class="attr">order</span>: [[<span class="string">&#x27;updatedTime&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]]</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> resultList = rows.<span class="title function_">map</span>(<span class="function">(<span class="params"><span class="attr">item</span>: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (&#123;</span><br><span class="line">            <span class="attr">id</span>: item.<span class="property">ID</span>,</span><br><span class="line">            <span class="attr">userId</span>: item.<span class="property">USERID</span>,</span><br><span class="line">            <span class="attr">userName</span>: item.<span class="property">USERNAME</span>,</span><br><span class="line">            <span class="attr">isDelete</span>: item.<span class="property">DELETEPAGE</span>,</span><br><span class="line">            <span class="attr">isUpdated</span>: item.<span class="property">UPDATEPAGE</span>,</span><br><span class="line">            <span class="attr">isSort</span>: item.<span class="property">SORTPAGE</span>,</span><br><span class="line">            <span class="attr">updatedDate</span>: item.<span class="property">updatedTime</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">new</span> <span class="title class_">ResultMeta</span>(</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">list</span>: resultList,</span><br><span class="line">            <span class="attr">current</span>: <span class="title class_">Number</span>(pageNum),</span><br><span class="line">            <span class="attr">size</span>: <span class="title class_">Number</span>(pageSize),</span><br><span class="line">            <span class="attr">total</span>: count</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title class_">ResultCodeEnum</span>.<span class="property">success</span>,</span><br><span class="line">        <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&#x27;查询成功&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    res.<span class="title function_">json</span>(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重命名</span></span><br><span class="line"><span class="comment">//lastName 重命名为 aliasLastName</span></span><br><span class="line"><span class="title class_">User</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">attributes</span>: [[<span class="string">&#x27;lastName&#x27;</span>, <span class="string">&#x27;aliasLastName&#x27;</span>], <span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 查询一个</span></span><br><span class="line">  <span class="keyword">const</span> zj = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">userName</span>: <span class="string">&#x27;zj&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zj: &#x27;</span>, zj.<span class="property">dataValues</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 查询列</span></span><br><span class="line">  <span class="keyword">const</span> zjInfo = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">attributes</span>: [<span class="string">&#x27;userName&#x27;</span>, <span class="string">&#x27;nickName&#x27;</span>]</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;info: &#x27;</span>, zjInfo.<span class="property">dataValues</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 查询集合</span></span><br><span class="line">  <span class="keyword">const</span> zjBlogs = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">userId</span>: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zjBlogs: &#x27;</span>, zjBlogs.<span class="title function_">map</span>( <span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 分页</span></span><br><span class="line">  <span class="keyword">const</span> blogPageList = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">limit</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">offset</span>: <span class="number">2</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;blogPageList: &#x27;</span>, blogPageList.<span class="title function_">map</span>( <span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 查询总数</span></span><br><span class="line">  <span class="keyword">const</span> blogListAndCount = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">limit</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">offset</span>: <span class="number">2</span></span><br><span class="line">  &#125;) </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;blogListAndCount：&#x27;</span>,</span><br><span class="line">   blogListAndCount.<span class="property">count</span>, <span class="comment">// 总数</span></span><br><span class="line">   blogListAndCount.<span class="property">rows</span>.<span class="title function_">map</span>(<span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>) </span><br><span class="line">   )</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 联表查询</span></span><br><span class="line">   <span class="keyword">const</span> blogListWithUser = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">include</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">model</span>: <span class="title class_">User</span>,</span><br><span class="line">        <span class="attr">attributes</span>: [<span class="string">&#x27;userName&#x27;</span>, <span class="string">&#x27;nickName&#x27;</span>],</span><br><span class="line">        <span class="attr">where</span>: &#123;</span><br><span class="line">          <span class="attr">userName</span>: <span class="string">&#x27;zj&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)  </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;blogListWithUser: &#x27;</span>,</span><br><span class="line">  blogListWithUser.<span class="property">count</span>,</span><br><span class="line">  blogListWithUser.<span class="property">rows</span>.<span class="title function_">map</span>(<span class="function"><span class="params">blog</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> blogVal = blog.<span class="property">dataValues</span></span><br><span class="line">    blogVal.<span class="property">user</span> = blogVal.<span class="property">user</span>.<span class="property">dataValues</span></span><br><span class="line">    <span class="keyword">return</span> blogVal</span><br><span class="line">  &#125;)</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 联表查询2</span></span><br><span class="line">  <span class="keyword">const</span> userListWithBlog = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">    <span class="attr">attributes</span>: [<span class="string">&#x27;userName&#x27;</span>, <span class="string">&#x27;nickName&#x27;</span>],</span><br><span class="line">    <span class="attr">include</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">model</span>: <span class="title class_">Blog</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;) </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;userListWithBlog: &#x27;</span>,</span><br><span class="line">  userListWithBlog.<span class="property">count</span>,</span><br><span class="line">  userListWithBlog.<span class="property">rows</span>.<span class="title function_">map</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> userVal = user.<span class="property">dataValues</span></span><br><span class="line">    userVal.<span class="property">blogs</span> = userVal.<span class="property">blogs</span>.<span class="title function_">map</span>(<span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>)</span><br><span class="line">    <span class="keyword">return</span> userVal</span><br><span class="line">  &#125;)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 创建用户</span></span><br><span class="line">  <span class="keyword">const</span> zj = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">userName</span>: <span class="string">&#x27;zj&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>: <span class="string">&#x27;123&#x27;</span>, </span><br><span class="line">    <span class="attr">nickName</span>: <span class="string">&#x27;zj&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//批量创建</span></span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">bulkCreate</span>([</span><br><span class="line">    &#123;<span class="attr">firstName</span>: <span class="string">&#x27;lxc&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">firstName</span>: <span class="string">&#x27;xc&#x27;</span>&#125;,</span><br><span class="line">]).<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;查询结果：&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(users))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除:</span></span><br><span class="line"><span class="keyword">const</span> affectedRows = <span class="keyword">await</span> <span class="title class_">UserModel</span>.<span class="title function_">destroy</span>(&#123;</span><br><span class="line">  <span class="attr">where</span>: &#123; <span class="attr">firstName</span>: <span class="string">&#x27;King&#x27;</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">User</span>.<span class="title function_">update</span>(&#123;<span class="attr">age</span>: <span class="number">50</span>&#125;, &#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;查询结果：&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(users))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Database/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jin Deng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Database/index/" class="post-title-link" itemprop="url">数据库</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025 11:26:42 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-20T11:26:42+08:00">2025</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/database/" itemprop="url" rel="index"><span itemprop="name">database</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/socket.io/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jin Deng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 健's 博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/socket.io/index/" class="post-title-link" itemprop="url">socket.io连接</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025 10:34:41 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-20T10:34:41+08:00">2025</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/socket-io/" itemprop="url" rel="index"><span itemprop="name">socket.io</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Socket-IO"><a href="#Socket-IO" class="headerlink" title="Socket.IO"></a>Socket.IO</h2><p>Socket.IO 是一个库，可以在客户端和服务器之间实现 低延迟, 双向 和 基于事件的 通信。</p>
+<p><em>Socket.IO 不是 WebSocket实现。</em><br>WebSocket 客户端将无法成功连接到 Socket.IO 服务器，而 Socket.IO 客户端也将无法连接到普通 WebSocket 服务器</p>
+<h3 id="服务端使用node-js"><a href="#服务端使用node-js" class="headerlink" title="服务端使用node.js"></a>服务端使用node.js</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * websocket服务</span></span><br><span class="line"><span class="comment"> * 使用socket.io</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">SocketServer</span> = http.<span class="title function_">createServer</span>(app);</span><br><span class="line"><span class="keyword">const</span> io = <span class="keyword">new</span> <span class="title class_">Server</span>(<span class="title class_">SocketServer</span>, &#123;</span><br><span class="line">    <span class="attr">cors</span>: &#123;</span><br><span class="line">        <span class="attr">origin</span>: <span class="string">&#x27;*&#x27;</span>,<span class="comment">//跨域问题</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">connectionStateRecovery</span>: &#123;</span><br><span class="line">        <span class="comment">// 会话和报文的备份时间</span></span><br><span class="line">        <span class="attr">maxDisconnectionDuration</span>: <span class="number">60</span> * <span class="number">1000</span>,</span><br><span class="line">        <span class="comment">// 恢复成功后是否跳过中间件</span></span><br><span class="line">        <span class="attr">skipMiddlewares</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 发送新的ping packet（30000）之前有多少ms</span></span><br><span class="line">    <span class="attr">pingInterval</span>: <span class="number">60000</span>,</span><br><span class="line">    <span class="comment">// 有多少ms没有传递消息则考虑连接close（5000）</span></span><br><span class="line">    <span class="attr">pingTimeout</span>: <span class="number">10000</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="连接事件"><a href="#连接事件" class="headerlink" title="连接事件"></a>连接事件</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">io.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="title function_">async</span> (socket) =&gt; &#123;</span><br><span class="line">    consol.<span class="title function_">log</span>(<span class="string">&#x27;连接成功&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="监听接收事件"><a href="#监听接收事件" class="headerlink" title="监听接收事件"></a>监听接收事件</h4><p>可以在连接成功的时候监听对应事件</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// socket为上述连接成功后的实例</span></span><br><span class="line"> socket.<span class="title function_">on</span>(<span class="string">&#x27;eventName&#x27;</span>,<span class="function">(<span class="params"><span class="attr">value</span>:<span class="built_in">any</span>,<span class="attr">callback</span>:()=&gt;&#123;&#125;</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;接收名为eventName事件的传输&#x27;</span>)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="发送事件"><a href="#发送事件" class="headerlink" title="发送事件"></a>发送事件</h4><p>也可以连接成功时发送消息到客户端</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送名为eventName事件给客户端，传输数据为value</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// socket为上述连接成功后的实例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这是发送给所有人，包括自己</span></span><br><span class="line"> socket.<span class="title function_">emit</span>(<span class="string">&#x27;eventName&#x27;</span>,(<span class="attr">value</span>:<span class="built_in">any</span>));</span><br><span class="line"></span><br><span class="line"> <span class="comment">//这是发送给除了自己以外的其他连接客户端</span></span><br><span class="line"> socket.<span class="property">broadcast</span>.<span class="title function_">emit</span>(<span class="string">&#x27;onlineCount&#x27;</span>, <span class="attr">value</span>:<span class="built_in">any</span>)</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端使用-react为例"><a href="#客户端使用-react为例" class="headerlink" title="客户端使用(react为例)"></a>客户端使用(react为例)</h3><h4 id="redux-socket-io-client"><a href="#redux-socket-io-client" class="headerlink" title="redux + socket.io.client"></a>redux + socket.io.client</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&quot;../../redux/store/configureStore&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; saveSocket &#125; <span class="keyword">from</span> <span class="string">&#x27;redux/actions/socket&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io <span class="keyword">from</span> <span class="string">&#x27;socket.io-client&#x27;</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 建立socket连接</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@name</span>: createConnect</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">*</span>&#125; path 传入格式模板&#x27;localhost:8080&#x27;,连接地址，当传入为空时会取域名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">*</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createConnect</span>(<span class="params">path</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> state = store.<span class="title function_">getState</span>()</span><br><span class="line">    <span class="keyword">if</span> (!state.<span class="property">socket</span>.<span class="property">socket</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> userInfo = <span class="variable language_">sessionStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;userLogin&#x27;</span>) ? <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="variable language_">sessionStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;userLogin&#x27;</span>)) : &#123;&#125;</span><br><span class="line">        <span class="comment">/* 判断redux中是否已经存在socket对象，存在证明已经连接直接返回socket对象，避免重复连接 */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> origin = <span class="string">&#x27;portal.ly-sky.com:6203&#x27;</span><span class="comment">//后端socket服务地址</span></span><br><span class="line">        <span class="keyword">let</span> socket = <span class="title function_">io</span>(<span class="string">&#x27;wss://&#x27;</span> + origin);<span class="comment">/* 建立连接 */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// let origin = &#x27;localhost:3011&#x27;//后端socket服务地址</span></span><br><span class="line">        <span class="comment">// let socket = io(&#x27;ws://&#x27; + origin);/* 建立连接 */</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> userItem = &#123;</span><br><span class="line">            <span class="attr">userName</span>: userInfo.<span class="property">userName</span>,</span><br><span class="line">            <span class="attr">userId</span>: userInfo.<span class="property">userId</span>,</span><br><span class="line">            <span class="attr">header</span>: userInfo.<span class="property">headPortrait</span></span><br><span class="line">        &#125;</span><br><span class="line">        socket.<span class="title function_">emit</span>(<span class="string">&#x27;userOnline&#x27;</span>, userItem)<span class="comment">//发送用户数据</span></span><br><span class="line">        store.<span class="title function_">dispatch</span>(<span class="title function_">saveSocket</span>(socket));<span class="comment">/* 把返回的对象存入redux中 */</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> state.<span class="property">socket</span>.<span class="property">socket</span><span class="comment">/* 返回redux中保存的socket对象 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="组件中创建连接"><a href="#组件中创建连接" class="headerlink" title="组件中创建连接"></a>组件中创建连接</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Index</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">        <span class="variable language_">super</span>(props)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">            <span class="attr">userInfo</span>: &#123;&#125;,</span><br><span class="line">            <span class="attr">pageNum</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">pageSize</span>: <span class="number">20</span>,</span><br><span class="line">            <span class="attr">open</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">onlineUsers</span>: [],</span><br><span class="line">            <span class="attr">onLineUserOpen</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">value</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="attr">list</span>: []</span><br><span class="line">            <span class="comment">// list: Array.from(&#123; length: 100 &#125;).fill(&#123; userName: &#x27;测试&#x27;, value: &#x27;测试数据&#x27;, date: &#x27;2024-10-09 15:55&#x27; &#125;)</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 建立socket连接</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">sockets</span> = <span class="title function_">createConnect</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件监听（api与服务端一致）"><a href="#事件监听（api与服务端一致）" class="headerlink" title="事件监听（api与服务端一致）"></a>事件监听（api与服务端一致）</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接收</span></span><br><span class="line">sockets.<span class="title function_">on</span>(<span class="string">&#x27;connect&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//监听连接是否成功</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;socket连接成功&#x27;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="comment">//发送</span></span><br><span class="line">socket.<span class="title function_">emit</span>(<span class="string">&#x27;sendMessage&#x27;</span>, userItem)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -203,7 +645,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025 14:18:34 / 修改时间：14:59:50" itemprop="dateCreated datePublished" datetime="2025-06-11T14:18:34+08:00">2025</time>
+      <time title="创建时间：2025 14:18:34 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-11T14:18:34+08:00">2025</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -313,7 +755,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025 11:48:49 / 修改时间：14:59:50" itemprop="dateCreated datePublished" datetime="2025-06-11T11:48:49+08:00">2025</time>
+      <time title="创建时间：2025 11:48:49 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-11T11:48:49+08:00">2025</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -426,7 +868,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025 11:36:08 / 修改时间：14:59:50" itemprop="dateCreated datePublished" datetime="2025-06-11T11:36:08+08:00">2025</time>
+      <time title="创建时间：2025 11:36:08 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-11T11:36:08+08:00">2025</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -505,7 +947,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025 10:17:50 / 修改时间：14:59:50" itemprop="dateCreated datePublished" datetime="2025-06-10T10:17:50+08:00">2025</time>
+      <time title="创建时间：2025 10:17:50 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-10T10:17:50+08:00">2025</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -584,7 +1026,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025 10:14:24 / 修改时间：14:59:50" itemprop="dateCreated datePublished" datetime="2025-06-10T10:14:24+08:00">2025</time>
+      <time title="创建时间：2025 10:14:24 / 修改时间：14:44:35" itemprop="dateCreated datePublished" datetime="2025-06-10T10:14:24+08:00">2025</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -625,85 +1067,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/html/html/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jin Deng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="健's 博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 健's 博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/html/html/" class="post-title-link" itemprop="url">HTML</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025 17:54:41 / 修改时间：14:59:50" itemprop="dateCreated datePublished" datetime="2025-06-09T17:54:41+08:00">2025</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Html/" itemprop="url" rel="index"><span itemprop="name">Html</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Html文档</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
 </div>
   </main>

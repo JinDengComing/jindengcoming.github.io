@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="ORMObject-Relationl Mapping，它的作用是在关系型数据库和对象之间作一个映射，这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了 。业务逻辑和数据处理逻辑分离，使用对象和数据层的映射关系。 以nodejs后端为例sequelize 首先建立连接  1234567891011121314151617181920212">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库ORM模型">
+<meta property="og:url" content="http://example.com/Database/orm/index.html">
+<meta property="og:site_name" content="健&#39;s 博客">
+<meta property="og:description" content="ORMObject-Relationl Mapping，它的作用是在关系型数据库和对象之间作一个映射，这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了 。业务逻辑和数据处理逻辑分离，使用对象和数据层的映射关系。 以nodejs后端为例sequelize 首先建立连接  1234567891011121314151617181920212">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-20T03:27:32.481Z">
+<meta property="article:author" content="Jin Deng">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/Database/orm/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/Database/orm/","path":"Database/orm/","title":"数据库ORM模型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据库ORM模型 | 健's 博客
+</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">健's 博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Coding Forever</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section">关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section">标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section">分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section">归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ORM"><span class="nav-number">1.</span> <span class="nav-text">ORM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5nodejs%E5%90%8E%E7%AB%AF%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">以nodejs后端为例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sequelize"><span class="nav-number">2.1.</span> <span class="nav-text">sequelize</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5"><span class="nav-number">2.1.1.</span> <span class="nav-text">查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E"><span class="nav-number">2.1.2.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0"><span class="nav-number">2.1.3.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B9"><span class="nav-number">2.1.4.</span> <span class="nav-text">改</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jin Deng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">数据库ORM模型
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/Database/">DATABASE</a></li>
+            <li><a href="/Database/orm/">ORM</a></li>
+            <li><a href="/Database/orm/"></a></li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><p>Object-Relationl Mapping，它的作用是在关系型数据库和对象之间作一个映射，这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了 。<br>业务逻辑和数据处理逻辑分离，使用对象和数据层的映射关系。</p>
+<h2 id="以nodejs后端为例"><a href="#以nodejs后端为例" class="headerlink" title="以nodejs后端为例"></a>以<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">nodejs</a>后端为例</h2><h3 id="sequelize"><a href="#sequelize" class="headerlink" title="sequelize"></a><a target="_blank" rel="noopener" href="https://www.sequelize.cn/">sequelize</a></h3><ol>
+<li>首先建立连接</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Sequelize</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;sequelize&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> oracledb <span class="keyword">from</span> <span class="string">&#x27;oracledb&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sequelize = <span class="keyword">new</span> <span class="title class_">Sequelize</span>(</span><br><span class="line">  <span class="string">&#x27;orcl&#x27;</span>,<span class="comment">//名称</span></span><br><span class="line">  <span class="string">&#x27;ly_mh_jcfw&#x27;</span>,<span class="comment">//用户</span></span><br><span class="line">  <span class="string">&#x27;ly_mh_jcfw@2021&#x27;</span>,<span class="comment">//密码</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,<span class="comment">//地址</span></span><br><span class="line">    <span class="attr">port</span>: <span class="string">&#x27;post&#x27;</span>,<span class="comment">//端口</span></span><br><span class="line">    <span class="attr">dialect</span>: <span class="string">&#x27;oracle&#x27;</span>,<span class="comment">//类型</span></span><br><span class="line">    <span class="attr">dialectModule</span>: oracledb,<span class="comment">//数据库插件</span></span><br><span class="line">    <span class="attr">pool</span>: &#123;</span><br><span class="line">      <span class="attr">max</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">acquire</span>: <span class="number">30000</span>,</span><br><span class="line">      <span class="attr">idle</span>: <span class="number">10000</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">timezone</span>: <span class="string">&quot;+08:00&quot;</span>, <span class="comment">//改为标准时区</span></span><br><span class="line">    <span class="attr">dialectOptions</span>: &#123;</span><br><span class="line">      <span class="attr">dateStrings</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">typeCast</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">define</span>: &#123;</span><br><span class="line">      <span class="attr">timestamps</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//暴露模块</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sequelize;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>定义model层<br>首先建立模型，关联对应数据库表映射</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Sequelize</span> <span class="keyword">from</span> <span class="string">&#x27;../db/connection&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">DataTypes</span>, <span class="title class_">Model</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;sequelize&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//表模型</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">LogSchema</span> = &#123;</span><br><span class="line">    <span class="comment">//字段定义</span></span><br><span class="line">    <span class="attr">LOGID</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="title class_">DataTypes</span>.<span class="property">STRING</span>,<span class="comment">//数据类型</span></span><br><span class="line">        <span class="attr">allowNull</span>: <span class="literal">false</span>,<span class="comment">//允许为空</span></span><br><span class="line">        <span class="attr">primaryKey</span>: <span class="literal">true</span>,<span class="comment">//是否主键</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Model</span> &#123; &#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Log</span>.<span class="title function_">init</span>(</span><br><span class="line">    <span class="title class_">LogSchema</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">sequelize</span>: <span class="title class_">Sequelize</span>,</span><br><span class="line">        <span class="attr">tableName</span>: <span class="string">&#x27;LY_MH_YM_LOG&#x27;</span>,</span><br><span class="line">        <span class="attr">modelName</span>: <span class="string">&#x27;pageLog&#x27;</span>,</span><br><span class="line">        <span class="attr">timestamps</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化表结构，查看连接是否成功</span></span><br><span class="line"><span class="title class_">Log</span>.<span class="title function_">sync</span>(&#123; <span class="attr">force</span>: <span class="literal">false</span> &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">Logger</span>.<span class="title function_">info</span>(<span class="string">&#x27;日志表同步成功&#x27;</span>);</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">Logger</span>.<span class="title function_">error</span>(<span class="string">&#x27;日志表同步失败&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Log</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>controller 业务层使用</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Request</span>, <span class="title class_">Response</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;express&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Log</span> <span class="keyword">from</span> <span class="string">&#x27;../models/log.models&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分页查询用户日志表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">userLogPage</span> = <span class="keyword">async</span> (<span class="params"><span class="attr">req</span>: <span class="title class_">Request</span>, <span class="attr">res</span>: <span class="title class_">Response</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; pageNum, pageSize, userId &#125; = req?.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="attr">begin</span>: <span class="built_in">number</span> = (<span class="title class_">Number</span>(pageNum) - <span class="number">1</span>) * <span class="title class_">Number</span>(pageSize);</span><br><span class="line">    <span class="keyword">const</span> &#123; rows, count &#125; = <span class="keyword">await</span> <span class="title class_">Log</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">        <span class="attr">attributes</span>: [</span><br><span class="line">            <span class="string">&#x27;ID&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;USERID&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;USERNAME&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;DELETEPAGE&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;UPDATEPAGE&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;SORTPAGE&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;updatedTime&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">offset</span>: begin,</span><br><span class="line">        <span class="attr">limit</span>: <span class="title class_">Number</span>(pageSize) || <span class="number">10</span>,</span><br><span class="line">        <span class="attr">where</span>: userId ? &#123; <span class="attr">USERID</span>: userId || <span class="string">&#x27;&#x27;</span> &#125; : &#123;&#125;,</span><br><span class="line">        <span class="attr">order</span>: [[<span class="string">&#x27;updatedTime&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]]</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> resultList = rows.<span class="title function_">map</span>(<span class="function">(<span class="params"><span class="attr">item</span>: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (&#123;</span><br><span class="line">            <span class="attr">id</span>: item.<span class="property">ID</span>,</span><br><span class="line">            <span class="attr">userId</span>: item.<span class="property">USERID</span>,</span><br><span class="line">            <span class="attr">userName</span>: item.<span class="property">USERNAME</span>,</span><br><span class="line">            <span class="attr">isDelete</span>: item.<span class="property">DELETEPAGE</span>,</span><br><span class="line">            <span class="attr">isUpdated</span>: item.<span class="property">UPDATEPAGE</span>,</span><br><span class="line">            <span class="attr">isSort</span>: item.<span class="property">SORTPAGE</span>,</span><br><span class="line">            <span class="attr">updatedDate</span>: item.<span class="property">updatedTime</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">new</span> <span class="title class_">ResultMeta</span>(</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">list</span>: resultList,</span><br><span class="line">            <span class="attr">current</span>: <span class="title class_">Number</span>(pageNum),</span><br><span class="line">            <span class="attr">size</span>: <span class="title class_">Number</span>(pageSize),</span><br><span class="line">            <span class="attr">total</span>: count</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title class_">ResultCodeEnum</span>.<span class="property">success</span>,</span><br><span class="line">        <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&#x27;查询成功&#x27;</span></span><br><span class="line">    )</span><br><span class="line">    res.<span class="title function_">json</span>(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重命名</span></span><br><span class="line"><span class="comment">//lastName 重命名为 aliasLastName</span></span><br><span class="line"><span class="title class_">User</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">attributes</span>: [[<span class="string">&#x27;lastName&#x27;</span>, <span class="string">&#x27;aliasLastName&#x27;</span>], <span class="string">&#x27;age&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 查询一个</span></span><br><span class="line">  <span class="keyword">const</span> zj = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">userName</span>: <span class="string">&#x27;zj&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zj: &#x27;</span>, zj.<span class="property">dataValues</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 查询列</span></span><br><span class="line">  <span class="keyword">const</span> zjInfo = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findOne</span>(&#123;</span><br><span class="line">    <span class="attr">attributes</span>: [<span class="string">&#x27;userName&#x27;</span>, <span class="string">&#x27;nickName&#x27;</span>]</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;info: &#x27;</span>, zjInfo.<span class="property">dataValues</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 查询集合</span></span><br><span class="line">  <span class="keyword">const</span> zjBlogs = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">      <span class="attr">userId</span>: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;zjBlogs: &#x27;</span>, zjBlogs.<span class="title function_">map</span>( <span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 分页</span></span><br><span class="line">  <span class="keyword">const</span> blogPageList = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAll</span>(&#123;</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">limit</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">offset</span>: <span class="number">2</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;blogPageList: &#x27;</span>, blogPageList.<span class="title function_">map</span>( <span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 查询总数</span></span><br><span class="line">  <span class="keyword">const</span> blogListAndCount = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">limit</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">offset</span>: <span class="number">2</span></span><br><span class="line">  &#125;) </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;blogListAndCount：&#x27;</span>,</span><br><span class="line">   blogListAndCount.<span class="property">count</span>, <span class="comment">// 总数</span></span><br><span class="line">   blogListAndCount.<span class="property">rows</span>.<span class="title function_">map</span>(<span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>) </span><br><span class="line">   )</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 联表查询</span></span><br><span class="line">   <span class="keyword">const</span> blogListWithUser = <span class="keyword">await</span> <span class="title class_">Blog</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">    <span class="attr">order</span>: [</span><br><span class="line">      [<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;desc&#x27;</span>]</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">include</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">model</span>: <span class="title class_">User</span>,</span><br><span class="line">        <span class="attr">attributes</span>: [<span class="string">&#x27;userName&#x27;</span>, <span class="string">&#x27;nickName&#x27;</span>],</span><br><span class="line">        <span class="attr">where</span>: &#123;</span><br><span class="line">          <span class="attr">userName</span>: <span class="string">&#x27;zj&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)  </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;blogListWithUser: &#x27;</span>,</span><br><span class="line">  blogListWithUser.<span class="property">count</span>,</span><br><span class="line">  blogListWithUser.<span class="property">rows</span>.<span class="title function_">map</span>(<span class="function"><span class="params">blog</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> blogVal = blog.<span class="property">dataValues</span></span><br><span class="line">    blogVal.<span class="property">user</span> = blogVal.<span class="property">user</span>.<span class="property">dataValues</span></span><br><span class="line">    <span class="keyword">return</span> blogVal</span><br><span class="line">  &#125;)</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 联表查询2</span></span><br><span class="line">  <span class="keyword">const</span> userListWithBlog = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">findAndCountAll</span>(&#123;</span><br><span class="line">    <span class="attr">attributes</span>: [<span class="string">&#x27;userName&#x27;</span>, <span class="string">&#x27;nickName&#x27;</span>],</span><br><span class="line">    <span class="attr">include</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">model</span>: <span class="title class_">Blog</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;) </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;userListWithBlog: &#x27;</span>,</span><br><span class="line">  userListWithBlog.<span class="property">count</span>,</span><br><span class="line">  userListWithBlog.<span class="property">rows</span>.<span class="title function_">map</span>(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> userVal = user.<span class="property">dataValues</span></span><br><span class="line">    userVal.<span class="property">blogs</span> = userVal.<span class="property">blogs</span>.<span class="title function_">map</span>(<span class="function"><span class="params">blog</span> =&gt;</span> blog.<span class="property">dataValues</span>)</span><br><span class="line">    <span class="keyword">return</span> userVal</span><br><span class="line">  &#125;)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+<h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 创建用户</span></span><br><span class="line">  <span class="keyword">const</span> zj = <span class="keyword">await</span> <span class="title class_">User</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">userName</span>: <span class="string">&#x27;zj&#x27;</span>,</span><br><span class="line">    <span class="attr">password</span>: <span class="string">&#x27;123&#x27;</span>, </span><br><span class="line">    <span class="attr">nickName</span>: <span class="string">&#x27;zj&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//批量创建</span></span><br><span class="line">  <span class="title class_">User</span>.<span class="title function_">bulkCreate</span>([</span><br><span class="line">    &#123;<span class="attr">firstName</span>: <span class="string">&#x27;lxc&#x27;</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">firstName</span>: <span class="string">&#x27;xc&#x27;</span>&#125;,</span><br><span class="line">]).<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;查询结果：&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(users))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除:</span></span><br><span class="line"><span class="keyword">const</span> affectedRows = <span class="keyword">await</span> <span class="title class_">UserModel</span>.<span class="title function_">destroy</span>(&#123;</span><br><span class="line">  <span class="attr">where</span>: &#123; <span class="attr">firstName</span>: <span class="string">&#x27;King&#x27;</span> &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">User</span>.<span class="title function_">update</span>(&#123;<span class="attr">age</span>: <span class="number">50</span>&#125;, &#123;</span><br><span class="line">    <span class="attr">where</span>: &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">users</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;查询结果：&#x27;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(users))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/Database/">DATABASE</a></li>
+            <li><a href="/Database/orm/">ORM</a></li>
+            <li><a href="/Database/orm/"></a></li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Jin Deng</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
