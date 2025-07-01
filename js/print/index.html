@@ -19,22 +19,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="健&#39;s 博客">
-<meta property="og:url" content="http://example.com/categories/JS/index.html">
+    <meta name="description" content="浏览器打印创建一个iframe的Dom,然后调用window.print() 浏览器window内置api 1234567891011121314151617let iframe &#x3D; document.getElementById(&quot;print-iframe&quot;);let detailImgWrap&#x3D;document.querySelectorAll(&#x27;.detailI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web 浏览器打印">
+<meta property="og:url" content="http://example.com/js/print/index.html">
 <meta property="og:site_name" content="健&#39;s 博客">
+<meta property="og:description" content="浏览器打印创建一个iframe的Dom,然后调用window.print() 浏览器window内置api 1234567891011121314151617let iframe &#x3D; document.getElementById(&quot;print-iframe&quot;);let detailImgWrap&#x3D;document.querySelectorAll(&#x27;.detailI">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-21T05:59:53.885Z">
 <meta property="article:author" content="Jin Deng">
+<meta property="article:tag" content="代码">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/categories/JS/">
+<link rel="canonical" href="http://example.com/js/print/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/JS/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/js/print/","path":"js/print/","title":"web 浏览器打印"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: JS | 健's 博客</title>
+<title>web 浏览器打印 | 健's 博客
+</title>
   
 
 
@@ -111,7 +116,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -124,6 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%93%E5%8D%B0"><span class="nav-number">1.</span> <span class="nav-text">浏览器打印</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -163,70 +169,47 @@
 
     </div>
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner page posts-expand">
 
 
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">JS
-          <small>分类</small>
-        </h1>
-      </div>
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">web 浏览器打印
+</h1>
+
+<div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/js/">JS</a></li>
+            <li><a href="/js/print/">PRINT</a></li>
+            <li><a href="/js/print/"></a></li>
+  </ul>
+</div>
+
+</header>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2025</span>
+      
+      
+      <div class="post-body">
+          <h1 id="浏览器打印"><a href="#浏览器打印" class="headerlink" title="浏览器打印"></a>浏览器打印</h1><p>创建一个iframe的Dom,然后调用window.print() 浏览器window内置<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/print">api</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> iframe = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;print-iframe&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> detailImgWrap=<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.detailImgWrap&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">detailImgWrap.<span class="property">style</span>.<span class="property">maxHeight</span>=<span class="string">&#x27;unset&#x27;</span></span><br><span class="line"><span class="comment">// detailImgWrap.style.maxHeight=&#x27;unset&#x27;</span></span><br><span class="line"><span class="keyword">if</span> (!iframe) &#123;</span><br><span class="line">    <span class="keyword">let</span> el = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;printContent&quot;</span>);</span><br><span class="line">    iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;IFRAME&#x27;</span>);</span><br><span class="line">    iframe.<span class="title function_">setAttribute</span>(<span class="string">&quot;id&quot;</span>, <span class="string">&quot;print-iframe&quot;</span>);</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe);</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;body&#x27;</span>)[<span class="number">0</span>].<span class="property">style</span>.<span class="property">zoom</span> = <span class="number">0.8</span>;</span><br><span class="line">    <span class="keyword">let</span> doc = iframe.<span class="property">contentWindow</span>.<span class="property">document</span>;</span><br><span class="line">    doc.<span class="title function_">write</span>(el.<span class="property">innerHTML</span>);</span><br><span class="line">    doc.<span class="title function_">close</span>();</span><br><span class="line">    iframe.<span class="property">contentWindow</span>.<span class="title function_">focus</span>();</span><br><span class="line">&#125;</span><br><span class="line">iframe.<span class="property">contentWindow</span>.<span class="title function_">print</span>();</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">removeChild</span>(iframe);</span><br></pre></td></tr></table></figure>
+      </div>
+      
+      
+      
     </div>
+  <ul class="breadcrumb">
+            <li><a href="/js/">JS</a></li>
+            <li><a href="/js/print/">PRINT</a></li>
+            <li><a href="/js/print/"></a></li>
+  </ul>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-06-21T13:59:53+08:00"
-              content="2025">
-          06-21
-        </time>
-      </div>
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/js/print/" itemprop="url">
-            <span itemprop="name">web 浏览器打印</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-06-10T10:14:24+08:00"
-              content="2025">
-          06-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/js/js/" itemprop="url">
-            <span itemprop="name">Javascript</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
 
 </div>
   </main>
